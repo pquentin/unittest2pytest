@@ -27,8 +27,8 @@ __copyright__ = "Copyright 2015-2019 by Hartmut Goebel"
 __licence__ = "GNU General Public License version 3 or later (GPLv3+)"
 
 
-from lib2to3.fixer_base import BaseFix
-from lib2to3.fixer_util import (
+from fissix.fixer_base import BaseFix
+from fissix.fixer_util import (
     Comma, Name, Call, Node, Leaf,
     Newline, KeywordArg, find_indentation,
     ArgList, String, Number, syms, token,
@@ -44,6 +44,8 @@ from .. import utils
 TEMPLATE_PATTERN = re.compile('[\1\2]|[^\1\2]+')
 
 def CompOp(op, left, right, kws):
+    if op == "==":
+        left, right = right, left
     op = Name(op, prefix=" ")
     left = parenthesize_expression(left)
     right = parenthesize_expression(right)

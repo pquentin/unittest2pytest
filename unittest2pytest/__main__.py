@@ -23,11 +23,12 @@ __copyright__ = "Copyright 2015-2019 by Hartmut Goebel"
 __licence__ = "GNU General Public License version 3 or later (GPLv3+)"
 
 
-import lib2to3.main
+import fissix.main
 from . import fixes
 
 def main():
-    raise SystemExit(lib2to3.main.main(fixes.__name__))
+    print(fixes.__name__)
+    raise SystemExit(fissix.main.main(fixes.__name__))
 
 if __name__ == '__main__':
     main()
